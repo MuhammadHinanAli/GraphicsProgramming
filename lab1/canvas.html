@@ -22,12 +22,18 @@
 		var c = document.getElementById("canvasOne");
 		// Set the canvas up for drawing in 2D.
 		var ctx = c.getContext("2d");
+        
 		// Set the fill colour to bright red.
 		
 		// Create a filled rectangle 
 		ctx.beginPath();
         ctx.rect(20, 20, 150, 100);
         ctx.stroke();
+        
+        //adding name
+        ctx.font = "30px Arial";
+        ctx.fillText("M H ALI",200,200);
+
     </script>
 
   </body>
