@@ -15,7 +15,7 @@
 
   <body>
 
-    <canvas id="canvasOne" width="500" height="500"></canvas>
+    <canvas id="canvasOne" width="450" height="400"></canvas>
 
     <script type="text/javascript">
 		// Gets a handle to the element with id canvasOne.
@@ -26,19 +26,38 @@
 		// Set the fill colour to bright red.
 		ctx.fillStyle = "rgb(255, 0, 0)";
 
-		// Create a filled rectangle 
-		ctx.beginPath();
-        ctx.rect(20, 20, 150, 100);
-        ctx.stroke();
-        
         //adding name
         ctx.font = "30px Arial";
         ctx.fillText("M H ALI",200,200);
 
+		// Create a filled rectangle 
+		ctx.beginPath();
+        ctx.fillStyle = "rgb(0,255,0)";
+        ctx.rect(20, 20, 150, 100);
+        ctx.fillRect(20, 20, 150, 100);
+        ctx.stroke();
+
         //Create second rectangle
         ctx.beginPath();
+        ctx.fillStyle = "rgba(255,99,71,0.2)";
+        ctx.rect(40, 40, 150, 100);
+        ctx.fillRect(40, 40, 150, 100);
+        ctx.stroke();
+
+        //adding circles
+        ctx.beginPath();
         ctx.fillStyle = "rgb(0,255,0)";
-        ctx.fillRect(300, 300, 150, 100);
+        ctx.arc(100, 300, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        //adding circles
+        ctx.beginPath();
+        ctx.arc(200, 300, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        //adding semi circle
+        ctx.beginPath();
+        ctx.arc(300, 300, 40, 0, Math.PI);
         ctx.stroke();
 
     </script>
