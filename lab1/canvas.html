@@ -28,7 +28,7 @@
 
         //adding name
         ctx.font = "30px Arial";
-        ctx.fillText("M H ALI",200,200);
+        ctx.fillText("M H ALI",175,200);
 
 		// Create a filled rectangle 
 		ctx.beginPath();
@@ -48,11 +48,15 @@
         ctx.beginPath();
         ctx.fillStyle = "rgb(0,255,0)";
         ctx.arc(100, 300, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
         ctx.stroke();
 
         //adding circles
         ctx.beginPath();
         ctx.arc(200, 300, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
         ctx.stroke();
 
         //adding semi circle
