@@ -57,11 +57,13 @@
           if(this.y >= 250 || this.y <= 0)
           {
             this.ySpeed = this.ySpeed * -1;
+            console.log("BALL TOUCHES VERTICALLY");
           }//IF STATEMENT FOR THE VERTICAL VELOCITY
           
           if(this.x >= 500 || this.x <= 0)
           {
             this.xSpeed = this.xSpeed * -1;
+            console.log("BALL TOUCHES HORIZONTALLY");
           }//IF STATEMENT FOR THE HORIZONTAL VELOCITY
         }
       }
