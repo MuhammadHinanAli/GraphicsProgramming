@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -18,7 +17,7 @@
   </head>
 
   <body>
-
+    
     <h1>M H ALI</h1>
 
     <canvas id="canvas-for-ball" width="500" height="250"></canvas>
@@ -28,26 +27,61 @@
       var canvas = document.getElementById("canvas-for-ball");
       // Get a 2D context for the canvas.
       var ctx = canvas.getContext("2d");
+
+
+      //CLASS
+      class Ball{
+        constructor(y, ySpeed, x, xSpeed, radius, context){
+          this.y =y;
+          this.ySpeed = ySpeed;
+          this.x = x;
+          this.xSpeed = xSpeed;
+          this.radius = radius;
+          this.context = context;
+        }//CONSTRUCTOR AND VARIABLES
+
+        //FUNCTION DRAWING THE BALL
+        draw(){
+
+          //CREATES THE CIRCLE
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+          ctx.stroke();
+        }
+        
+        //FUNCTION MOVING THE BALL
+        move(){
+          this.y += this.ySpeed;
+          this.x += this.xSpeed;
+
+          if(this.y >= 250 || this.y <= 0)
+          {
+            this.ySpeed = this.ySpeed * -1;
+          }//IF STATEMENT FOR THE VERTICAL VELOCITY
+          
+          if(this.x >= 500 || this.y <= 0)
+          {
+            this.xSpeed = this.xSpeed * -1;
+          }//IF STATEMENT FOR THE HORIZONTAL VELOCITY
+        }
+      }
       
-      // The vertical location of the ball.
-      var y = 10;
+      //NEW OBJECT 
+      ball1 = new Ball(20, 2, 20, 2, 10, ctx)
+    
       // A function to repeat every time the animation loops.
       function repeatme() {
-        // Draw the ball (stroked, not filled).
-        ctx.clearRect(0, 0, 500, 250);
 
-        ctx.beginPath();
-        ctx.arc(50, y, 3, 0, 2 * Math.PI);
-        ctx.stroke();
-        
-        // Update the y location.
-        y += 1;
-        
+        ctx.clearRect(0, 0, 500, 250); //CLEARS THE BALL TRACES
+        ball1.draw(); //DRAWS THE BALL
+        ball1.move(); //MOVES THE BALL
+       
         window.requestAnimationFrame(repeatme);
       }
       
       // Get the animation going.
       repeatme();
+
     </script>
 
   </body>
