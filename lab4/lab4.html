@@ -217,6 +217,32 @@
             ball.x += overlap * Math.cos(collisionAngle);
             ball.y += overlap * Math.sin(collisionAngle);
         }
+        
+        var radiusB = 15;
+        var balls = [];
+        // Array of colours
+        var color = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "teal", "brown", "gray", "cyan", "magenta", "lime", "indigo", "violet", "olive", "navy", "maroon", "black", "white"];
+        
+        // Creating ball object
+        // Create object within the loop
+        for (var i = 0; i < 4; i++) {
+            // Random number for x-coordinate of the ball
+            var ranX = (Math.random() * (canvas.width - (2 * radiusB)) + radiusB);
+            // Random number for x-speed of the ball
+            var ranXSpeed = (Math.random() * 8);
+            // Random number for y-speed of the ball
+            var ranYSpeed = (Math.random() * 6) - 3;
+            // Random number for gravity of the ball
+            var ranGravity = (Math.random() * 5) + 5;
+            // Creating ball object as a new element
+            var element = new Ball(ranX, radiusB, ranXSpeed, ranYSpeed, radiusB, color[i], ranGravity, 10);
+            console.log("gravity " + ranGravity);
+            // Push the Ball object into the array
+            balls.push(element);
+        }
+        // Create paddle object
+        r1 = new Paddle(20, canvas.height / 2, 20, 20, 20);
+        r2 = new Paddle(canvas.width - 20, canvas.height / 2, 20, 20, 20);
 
 
 
