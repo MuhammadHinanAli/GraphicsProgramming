@@ -118,27 +118,36 @@
 			}
 		}
 
-		// Add a Javascript event listener to the keypress event.
-		window.addEventListener("keypress", function (event) {
-			// Just log the event to the console.
-			console.log(event);
-		});
-
-		//keypresses with jQuery
-		$(document.body).on('keydown', function (e) {
-			console.log(e.which);
-			switch (e.which) {
-				// key code for left arrow
-				case 37:
-					console.log('left arrow key pressed!');
-					break;
-
-				// key code for right arrow
-				case 39:
-					console.log('right arrow key pressed!');
-					break;
+		class Paddle {
+			//Constructor
+			constructor(x, y, xSpeed) {
+				this.x = x;
+				this.y = y;
+				this.xSpeed = xSpeed;
 			}
-		});
+			//Draw method()
+			draw() {
+				ctx.strokeStyle = 'red';
+				ctx.lineWidth = 1.5;
+				ctx.beginPath();
+				ctx.rect(this.x, this.y, 10, 40);
+				ctx.stroke();
+			}
+			//Move paddle down
+			moveD() {
+				if (this.y <= 150)
+					this.y += this.xSpeed;
+			}
+			//Move paddle up
+			moveU() {
+				if (this.y >= 10)
+					this.y -= this.xSpeed;
+			}
+		}
+		//Creating ball object
+		b1 = new Ball(15, 15, 3, 3, 15);
+		r1 = new Paddle(490, 80, 10);
+		r2 = new Paddle(0, 80, 10);
 	</script>
 
 </body>
