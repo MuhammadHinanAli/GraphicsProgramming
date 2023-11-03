@@ -125,6 +125,15 @@
                 this.radius = radius;
                 this.mass = mass;
             }
+
+            //Draw method()
+            draw() {
+                ctx.strokeStyle = 'red';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
         }
 
 
