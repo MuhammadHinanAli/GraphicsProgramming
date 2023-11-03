@@ -31,6 +31,22 @@
         canvas.width = 500;
         canvas.height = 200;
 
+        class Ball {
+            //Constructor
+            constructor(x, y, xSpeed, ySpeed, radius, color, gravity, mass) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.xSpeed = xSpeed;
+                this.ySpeed = ySpeed;
+                this.rotationAngle = 1;
+                this.rotationDirection = 1;
+                this.gravity = gravity / 10;
+                this.mass = mass;
+                this.color = color;
+            }
+        }
+
 
 
     </script>
