@@ -26,6 +26,13 @@
 		var ctx = canvas.getContext("2d");
 		// Make the fill style red.
 		ctx.fillStyle = "rgb(255, 0, 0)";
+		
+		var canvasPosition = {
+            x: canvas.offsetLeft,
+            y: canvas.offsetTop
+        };
+        canvas.width = 500;
+        canvas.height = 200;
 
 		// Add a Javascript event listener to the keypress event.
 		window.addEventListener("keypress", function(event) { 
