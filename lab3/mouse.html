@@ -37,20 +37,25 @@
       
       //EVENT CAPTURING CLICK
       canvas.addEventListener("click", function(event) { 
-        
+        console.log("Global: "+ event.clientX, event.clientY);
+        console.log("Local: "+ canvas.offsetLeft, canvas.offsetTop);
+
         //gets mouse position
         var mouse ={
           x: event.pageX - canvasPosition.x,
           y: event.pageY - canvasPosition.y
         }
-
+        
+        //DRAWS CIRCILE
         ctx.beginPath();
-        ctx.arc(50, 50, 6, 0, 2 * Math.PI);
+        ctx.arc(mouse.x, mouse.y, 6, 0, 2 * Math.PI);
         ctx.fill();
         
+        //RECORD NO OF CLICKS
         noClicks += 1;
         console.log(noClicks);
       });
+      
     </script>
 
   </body>
