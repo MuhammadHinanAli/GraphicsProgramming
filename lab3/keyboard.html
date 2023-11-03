@@ -37,7 +37,7 @@
 
 		class Ball {
 			//Constructor
-			constructor(x, y, xSpeed, ySpeed, radius, color, gravity, mass) {
+			constructor(x, y, xSpeed, ySpeed, radius) {
 				this.x = x;
 				this.y = y;
 				this.radius = radius;
@@ -45,21 +45,14 @@
 				this.ySpeed = ySpeed;
 				this.rotationAngle = 1;
 				this.rotationDirection = 1;
-				this.gravity = gravity / 10;
-				this.mass = mass;
-				this.color = color;
 			}
 
 			//Draw method()
 			draw() {
-				ctx.strokeStyle = 'black';
-				ctx.lineWidth = 2;
-				ctx.fillStyle = this.color;
 				// Start trace
 				ctx.beginPath();
 				// Draw a circle
 				ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-				ctx.fill();
 				var xMath;
 				var yMath;
 				var rotation = this.rotationAngle * (Math.PI / 180);
@@ -94,7 +87,6 @@
 
 			// Move method
 			move() {
-				this.ySpeed += this.gravity;
 				this.y += this.ySpeed;
 				this.x += this.xSpeed;
 
@@ -106,7 +98,7 @@
 				if (this.y >= canvas.height - this.radius) {
 					this.y = canvas.height - this.radius;
 					// Change direction and add gravity
-					this.ySpeed *= -0.95;
+					this.ySpeed *= -1;
 				}
 				// If the ball hits the left or right wall
 				if (this.x >= canvas.width - this.radius || this.x <= this.radius) {
@@ -150,56 +142,56 @@
 		r1 = new Paddle(490, 80, 10);
 		r2 = new Paddle(0, 80, 10);
 
-		// A function to repeat every time the animation loops.
-		function repeatme() {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			// Draw the ball.
-			b1.draw();
-			// Draw the paddles
-			r1.draw();
-			r2.draw();
-			// Move the ball
-			b1.move();
-			window.requestAnimationFrame(repeatme);
-		}
-		// Get the animation going.
-		repeatme();
-		canvas.addEventListener('mousemove', function (event) {
-			// Calculate the new position for the paddle based on the mouse y-coordinate
-			var mouse = event.clientY - canvasPosition.y;
-			r1.y = Math.max(10, mouse - 20);
-			console.log(r1.y);
-		});
-		//keypresses with jQuery
-		$(document.body).on('keydown', function (e) {
-			console.log(e.which);
-			switch (e.which) {
-				// key code for left arrow
-				case 37:
-					console.log('left arrow key pressed!');
-					// Slow down the rotatiom
-					b1.rotationDirection -= 1;
-					break;
-				// key code for up arrow
-				case 38:
-					console.log('up arrow key pressed!');
-					r2.moveU();
-					r1.moveU();
-					break;
-				// key code for right arrow
-				case 39:
-					console.log('right arrow key pressed!');
-					//
-					b1.rotationDirection += 1;
-					break;
-				// key code for down arrow
-				case 40:
-					console.log('down arrow key pressed!');
-					r2.moveD();
-					r1.moveD();
-					break;
-			}
-		});
+		 // A function to repeat every time the animation loops.
+		 function repeatme() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw the ball.
+            b1.draw();
+            // Draw the paddles
+            r1.draw();
+            r2.draw();
+            // Move the ball
+            b1.move();
+            window.requestAnimationFrame(repeatme);
+        }
+        // Get the animation going.
+        repeatme();
+        canvas.addEventListener('mousemove', function (event) {
+            // Calculate the new position for the paddle based on the mouse y-coordinate
+            var mouse = event.clientY - canvasPosition.y;
+            r1.y = Math.max(10, mouse - 20);
+            console.log(r1.y);
+        });
+        //keypresses with jQuery
+        $(document.body).on('keydown', function (e) {
+            console.log(e.which);
+            switch (e.which) {
+                // key code for left arrow
+                case 37:
+                    console.log('left arrow key pressed!');
+                    // Slow down the rotatiom
+                    b1.rotationDirection -= 1;
+                    break;
+                // key code for up arrow
+                case 38:
+                    console.log('up arrow key pressed!');
+                    r2.moveU();
+                    r1.moveU();
+                    break;
+                // key code for right arrow
+                case 39:
+                    console.log('right arrow key pressed!');
+                    //
+                    b1.rotationDirection += 1;
+                    break;
+                // key code for down arrow
+                case 40:
+                    console.log('down arrow key pressed!');
+                    r2.moveD();
+                    r1.moveD();
+                    break;
+            }
+        });
 	</script>
 
 </body>
