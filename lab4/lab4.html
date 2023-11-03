@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <canvas id="canvas-for-ball"></canvas>
     <h1>M H ALI </h1>
     <hr>
+    <canvas id="canvas-for-ball"></canvas>
     <h4 id="collision"></h4>
     <hr>
     <script type="text/javascript">
@@ -271,10 +271,51 @@
             console.log(r1.y);
         });
 
-
-
+        //keypresses with jQuery
+        $(document.body).on('keydown', function (e) {
+            console.log(e.which);
+            switch (e.which) {
+                // key code for left arrow
+                case 37:
+                    console.log('left arrow key pressed!');
+                    // Move left
+                    r1.moveL();
+                    break;
+                // key code for up arrow
+                case 38:
+                    console.log('up arrow key pressed!');
+                    // Move up
+                    r1.moveU();
+                    break;
+                // key code for right arrow
+                case 39:
+                    console.log('right arrow key pressed!');
+                    // Move right
+                    r1.moveR();
+                    break;
+                // key code for down arrow
+                case 40:
+                    console.log('down arrow key pressed!');
+                    // Move down
+                    r1.moveD();
+                    break;
+                case 70: // 'f'
+                    console.log('f key pressed!');
+                    for (var i = 0; i < balls.length; i++) {
+                        balls[i].xSpeed *= 1.1;
+                    }
+                    break;
+                case 71: // 'g'
+                    console.log('g key pressed!');
+                    for (var j = 0; j < balls.length; j++) {
+                        balls[j].xSpeed /= 1.1;
+                    }
+                    break;
+            }
+        });
+        
     </script>
 
-</body>
+  </body>
 
 </html>
