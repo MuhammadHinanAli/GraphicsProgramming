@@ -45,7 +45,7 @@
                 this.mass = mass;
                 this.color = color;
             }
-            
+
             //Draw method()
             draw() {
                 ctx.strokeStyle = 'black';
@@ -86,6 +86,33 @@
 
                 // Draw the symbol
                 ctx.stroke();
+            }
+            
+            // Move method
+            move() {
+                this.ySpeed += this.gravity;
+                this.y += this.ySpeed;
+                this.x += this.xSpeed;
+
+                // If the ball reaches the top of canvas -> Change direction
+                if (this.y <= this.radius) {
+                    this.ySpeed = this.ySpeed * (-1);
+                }
+                // If the ball hits the bottom of the canvas
+                if (this.y >= canvas.height - this.radius) {
+                    this.y = canvas.height - this.radius;
+                    // Change direction and add gravity
+                    this.ySpeed *= -0.95;
+                }
+                // If the ball hits the left or right wall
+                if (this.x >= canvas.width - this.radius || this.x <= this.radius) {
+                    // Change direction of movement
+                    this.xSpeed = this.xSpeed * (-1);
+                    // Change direction of spinning
+                    this.rotationDirection = this.rotationDirection * (-1);
+                }
+                //detectCollision();
+                detectCollision();
             }
         }
 
