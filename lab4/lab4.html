@@ -87,7 +87,7 @@
                 // Draw the symbol
                 ctx.stroke();
             }
-            
+
             // Move method
             move() {
                 this.ySpeed += this.gravity;
@@ -113,6 +113,17 @@
                 }
                 //detectCollision();
                 detectCollision();
+            }
+        }
+
+        class Paddle {
+            //Constructor
+            constructor(x, y, xSpeed, radius, mass) {
+                this.x = x;
+                this.y = y;
+                this.xSpeed = xSpeed;
+                this.radius = radius;
+                this.mass = mass;
             }
         }
 
