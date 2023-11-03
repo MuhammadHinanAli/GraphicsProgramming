@@ -187,6 +187,36 @@
                 }
             }
         }
+        function handleCollision(ball, paddle) {
+
+            const dx = ball.x - paddle.x;
+            const dy = ball.y - paddle.y;
+            const collisionAngle = Math.atan2(dy, dx);
+            const collisionSpeed = Math.sqrt(dx * dx + dy * dy);
+
+            // Calculate the angles and speeds of both objects
+            const ballAngle = Math.atan2(ball.ySpeed, ball.xSpeed);
+            const ballSpeed = Math.sqrt(ball.xSpeed * ball.xSpeed + ball.ySpeed * ball.ySpeed);
+            const paddleAngle = Math.atan2(0, 1); // Paddle's movement direction
+            const paddleSpeed = 5; // Adjust this value as needed
+
+            // Calculate new velocities after collision
+            const newBallSpeed = (ballSpeed * (ball.mass - paddle.mass) + 2 * paddle.mass * paddleSpeed) / (ball.mass + paddle.mass);
+            const newPaddleSpeed = (2 * ballSpeed * ball.mass) / (ball.mass + paddle.mass);
+
+            // Update ball's velocity
+            ball.xSpeed = newBallSpeed * Math.cos(collisionAngle);
+            ball.ySpeed = newBallSpeed * Math.sin(collisionAngle);
+
+            // Update paddle's velocity (if needed)
+            // paddle.xSpeed = newPaddleSpeed * Math.cos(paddleAngle);
+            // paddle.ySpeed = newPaddleSpeed * Math.sin(paddleAngle);
+
+            // Move the ball outside of the paddle to avoid sinking
+            const overlap = ball.radius + paddle.radius - collisionSpeed;
+            ball.x += overlap * Math.cos(collisionAngle);
+            ball.y += overlap * Math.sin(collisionAngle);
+        }
 
 
 
