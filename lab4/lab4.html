@@ -45,6 +45,48 @@
                 this.mass = mass;
                 this.color = color;
             }
+            
+            //Draw method()
+            draw() {
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2;
+                ctx.fillStyle = this.color;
+                // Start trace
+                ctx.beginPath();
+                // Draw a circle
+                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                ctx.fill();
+                var xMath;
+                var yMath;
+                var rotation = this.rotationAngle * (Math.PI / 180);
+                //Change the rotation amount for the next frame
+                this.rotationAngle += this.rotationDirection;
+
+                // Drawing prohibition symbol
+                // North West Line
+                ctx.moveTo(this.x, this.y);//Moving the starting point back to the center of the circle
+                xMath = this.x + (this.radius * Math.cos(rotation + (5 * Math.PI) / 4));
+                yMath = this.y + (this.radius * Math.sin(rotation + (5 * Math.PI) / 4));
+                ctx.lineTo(xMath, yMath);
+                // South West Line
+                ctx.moveTo(this.x, this.y);//Moving the starting point back to the center of the circle
+                xMath = this.x + (this.radius * Math.cos(rotation + (3 * Math.PI) / 4));
+                yMath = this.y + (this.radius * Math.sin(rotation + (3 * Math.PI) / 4));
+                ctx.lineTo(xMath, yMath);
+                // North West Line
+                ctx.moveTo(this.x, this.y);//Moving the starting point back to the center of the circle
+                xMath = this.x + (this.radius * Math.cos(rotation + (7 * Math.PI) / 4));
+                yMath = this.y + (this.radius * Math.sin(rotation + (7 * Math.PI) / 4));
+                ctx.lineTo(xMath, yMath);
+                // South East Line
+                ctx.moveTo(this.x, this.y);//Moving the starting point back to the center of the circle
+                xMath = this.x + (this.radius * Math.cos(rotation + (Math.PI) / 4));
+                yMath = this.y + (this.radius * Math.sin(rotation + (Math.PI) / 4));
+                ctx.lineTo(xMath, yMath);
+
+                // Draw the symbol
+                ctx.stroke();
+            }
         }
 
 
