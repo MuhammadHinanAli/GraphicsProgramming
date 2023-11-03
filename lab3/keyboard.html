@@ -144,11 +144,62 @@
 					this.y -= this.xSpeed;
 			}
 		}
-		
+
 		//Creating ball object
 		b1 = new Ball(15, 15, 3, 3, 15);
 		r1 = new Paddle(490, 80, 10);
 		r2 = new Paddle(0, 80, 10);
+
+		// A function to repeat every time the animation loops.
+		function repeatme() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			// Draw the ball.
+			b1.draw();
+			// Draw the paddles
+			r1.draw();
+			r2.draw();
+			// Move the ball
+			b1.move();
+			window.requestAnimationFrame(repeatme);
+		}
+		// Get the animation going.
+		repeatme();
+		canvas.addEventListener('mousemove', function (event) {
+			// Calculate the new position for the paddle based on the mouse y-coordinate
+			var mouse = event.clientY - canvasPosition.y;
+			r1.y = Math.max(10, mouse - 20);
+			console.log(r1.y);
+		});
+		//keypresses with jQuery
+		$(document.body).on('keydown', function (e) {
+			console.log(e.which);
+			switch (e.which) {
+				// key code for left arrow
+				case 37:
+					console.log('left arrow key pressed!');
+					// Slow down the rotatiom
+					b1.rotationDirection -= 1;
+					break;
+				// key code for up arrow
+				case 38:
+					console.log('up arrow key pressed!');
+					r2.moveU();
+					r1.moveU();
+					break;
+				// key code for right arrow
+				case 39:
+					console.log('right arrow key pressed!');
+					//
+					b1.rotationDirection += 1;
+					break;
+				// key code for down arrow
+				case 40:
+					console.log('down arrow key pressed!');
+					r2.moveD();
+					r1.moveD();
+					break;
+			}
+		});
 	</script>
 
 </body>
