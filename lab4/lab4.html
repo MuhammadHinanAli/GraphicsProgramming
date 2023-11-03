@@ -217,12 +217,12 @@
             ball.x += overlap * Math.cos(collisionAngle);
             ball.y += overlap * Math.sin(collisionAngle);
         }
-        
+
         var radiusB = 15;
         var balls = [];
         // Array of colours
         var color = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "teal", "brown", "gray", "cyan", "magenta", "lime", "indigo", "violet", "olive", "navy", "maroon", "black", "white"];
-        
+
         // Creating ball object
         // Create object within the loop
         for (var i = 0; i < 4; i++) {
@@ -243,6 +243,23 @@
         // Create paddle object
         r1 = new Paddle(20, canvas.height / 2, 20, 20, 20);
         r2 = new Paddle(canvas.width - 20, canvas.height / 2, 20, 20, 20);
+
+        // A function to repeat every time the animation loops.
+        function repeatme() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw the paddles
+            r1.draw();
+            r2.draw();
+
+            // Draw and move all of the objects into the array
+            for (var i = 0; i < balls.length; i++) {
+                balls[i].draw();
+                balls[i].move();
+            }
+            window.requestAnimationFrame(repeatme);
+        }
+        // Get the animation going.
+        repeatme();
 
 
 
