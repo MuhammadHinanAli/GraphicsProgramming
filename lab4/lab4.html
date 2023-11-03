@@ -157,6 +157,37 @@
             }
         }
 
+        // This function detects collision between Ball object and Paddle object
+        function detectCollision() {
+
+            // Get the element with the ID "collision" and store it in the variable "heading"
+            var heading = document.getElementById("collision");
+
+            for (var i = 0; i < balls.length; i++) {
+                var distance1 = Math.sqrt(Math.pow(balls[i].x - r1.x, 2) + Math.pow(balls[i].y - r1.y, 2));
+                var distance2 = Math.sqrt(Math.pow(balls[i].x - r2.x, 2) + Math.pow(balls[i].y - r2.y, 2));
+                // Check if distance between b1 and r1 coordiantes is equal as sum of radius of those two objects
+                if (distance1 <= balls[i].radius + r1.radius || distance2 <= balls[i].radius + r1.radius) {
+                    console.log("COLLISION !");
+                    // Display the text
+                    heading.textContent = ("Collision has occured !");
+                    // Call handleCollision function
+                    if (distance1 <= balls[i].radius + r1.radius) {
+                        handleCollision(balls[i], r1);
+                    }
+                    if (distance2 <= balls[i].radius + r2.radius) {
+                        handleCollision(balls[i], r2);
+                    }
+
+                    // Set timeout for 0.75 seconds
+                    setTimeout(function () {
+                        // Remove the display message
+                        heading.textContent = ("");
+                    }, 750);
+                }
+            }
+        }
+
 
 
     </script>
