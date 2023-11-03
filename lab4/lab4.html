@@ -134,6 +134,27 @@
                 ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
                 ctx.stroke();
             }
+
+            //Move paddle down
+            moveD() {
+                if (this.y <= canvas.height - (2 * this.radius))
+                    this.y += this.xSpeed;
+            }
+            //Move paddle up
+            moveU() {
+                if (this.y >= (2 * this.radius))
+                    this.y -= this.xSpeed;
+            }
+            // Move paddle right
+            moveR() {
+                if (this.x <= canvas.width - (2 * this.radius))
+                    this.x += this.xSpeed;
+            }
+            //Move paddle left
+            moveL() {
+                if (this.x >= (2 * this.radius))
+                    this.x -= this.xSpeed;
+            }
         }
 
 
