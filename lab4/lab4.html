@@ -261,6 +261,16 @@
         // Get the animation going.
         repeatme();
 
+        // Mouse event
+        canvas.addEventListener('mousemove', function (event) {
+            // Calculate the new position for the paddle based on the mouse y-coordinate
+            var mouseY = event.clientY - canvasPosition.y;
+            var mouseX = event.clientX - canvasPosition.x;
+            r2.y = Math.max(50, mouseY - 5);
+            r2.x = Math.max(50, mouseX - 5);
+            console.log(r1.y);
+        });
+
 
 
     </script>
