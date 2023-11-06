@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html>
-   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js" 
-integrity="sha512-3q7E1auBiTXnYd6u7GJC16HDUR0aG+p8jhxIb5Arvhrr2Pu60fjN6z8RNIkq2y1yvfbZnBcssQpHkLZM2riv1w==" 
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
- <head>
-   <meta charset="UTF-8">
-   <title>3D</title>
-   <style type="text/css">
-   </style>
- </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js"
+  integrity="sha512-3q7E1auBiTXnYd6u7GJC16HDUR0aG+p8jhxIb5Arvhrr2Pu60fjN6z8RNIkq2y1yvfbZnBcssQpHkLZM2riv1w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
- <body>
+<head>
+  <meta charset="UTF-8">
+  <title>3D</title>
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
   <h1>M H ALI </h1>
   <hr>
-   <script type="text/javascript">
+  <script type="text/javascript">
 
-      //IMPLEMENTING A SCENE, CAMERA AND RENDERER
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
+    //IMPLEMENTING A SCENE, CAMERA AND RENDERER
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
-      //Creating a Tetrahedron (including material and mesh) and add it to the scene.
-      const geometry = new THREE.TetrahedronGeometry(5, 0); //(RADIUS,DETAIL)
-      const material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }); //wireframe: false for the next part of the exercises.
-      const tetrahedron = new THREE.Mesh(geometry, material);
-      scene.add(tetrahedron);
+    //Creating a Tetrahedron (including material and mesh) and add it to the scene.
+    const geometry = new THREE.TetrahedronGeometry(5, 0); //(RADIUS,DETAIL)
+    const material = new THREE.MeshLambertMaterial({ color: 0xffff00, wireframe : false, emissive: 0x049EF4 }); //wireframe: false for the next part of the exercises //changed to MESHLAMBERTMATERIAL.
+    const tetrahedron = new THREE.Mesh(geometry, material);
+    scene.add(tetrahedron);
 
-      camera.position.z = 10;
+    //CAMERA POSITION
+    camera.position.z = 10;
 
-      //REPEAT ME FUNCTION
-      function repeatme() {
+    //spotlight added
+    var spotLight = new THREE.SpotLight(0xffffff);
+    spotLight.position.set(1, 0.5, 1);
+    scene.add(spotLight);
 
-         //set up renderer
-         renderer.render( scene, camera );
 
-         //rotating the tetrahedron
-         tetrahedron.rotation.x += 0.1;
-         tetrahedron.rotation.y += 0.1;
+    //REPEAT ME FUNCTION
+    function repeatme() {
 
-         requestAnimationFrame(repeatme);
-      }
-      repeatme();
+      //set up renderer
+      renderer.render(scene, camera);
 
-   </script>
+      //rotating the tetrahedron
+      tetrahedron.rotation.x += 0.1;
+      tetrahedron.rotation.y += 0.1;
 
- </body>
+      requestAnimationFrame(repeatme);
+    }
+    repeatme();
+
+  </script>
+
+</body>
 
 </html>
