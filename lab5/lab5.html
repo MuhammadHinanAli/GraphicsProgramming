@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.js"
+   integrity="sha512-yv6OMdlbmbxkdY8D0jvEOdu1BodZMhZG/VSQCBkc3ztg+uoy+uw9HGGW16AumexloyYg8GOF7uoIWlU9VFw53A=="
+   crossorigin="anonymous" referrerpolicy="no-referrer">
+ </script>
 
-<head>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.js"
-      integrity="sha512-yv6OMdlbmbxkdY8D0jvEOdu1BodZMhZG/VSQCBkc3ztg+uoy+uw9HGGW16AumexloyYg8GOF7uoIWlU9VFw53A=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+ <head>
    <meta charset="UTF-8">
    <title>3D</title>
    <style type="text/css">
    </style>
-</head>
+ </head>
 
-<body>
+ <body>
    <script type="text/javascript">
 
       //IMPLEMENTING A SCENE, CAMERA AND RENDERER
@@ -24,25 +24,27 @@
       document.body.appendChild(renderer.domElement);
 
       //Creating a Tetrahedron (including material and mesh) and add it to the scene.
-      const geometry = new THREE.TetrahedronGeometry(5,0); //(RADIUS,DETAIL)
+      const geometry = new THREE.TetrahedronGeometry(5, 0); //(RADIUS,DETAIL)
       const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
       const tetrahedron = new THREE.Mesh(geometry, material);
       scene.add(tetrahedron);
 
       //REPEAT ME FUNCTION
-      function repeatme(){
+      function repeatme() {
 
          //set up renderer
-         renderer.render(scene,camera);
+         renderer.render(scene, camera);
 
          //rotating the tetrahedron
          tetrahedron.rotation.x += 0.1;
          tetrahedron.rotation.y += 0.1;
+
+         requestAnimationFrame(repeatme);
       }
       repeatme();
-      
+
    </script>
 
-</body>
+ </body>
 
 </html>
