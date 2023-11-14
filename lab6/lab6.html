@@ -19,10 +19,16 @@
     <hr>
 
   <script type="text/javascript">
-  //RETRIEVE THE JSON DATA
+
+    //RETRIEVE THE JSON DATA
     $.getJSON("https://pkgstore.datahub.io/core/co2-ppm/co2-mm-mlo_json/data/aed7eb0d19cbcd90790525d40728b0a8/co2-mm-mlo_json.json", function(data) {
       console.log(data);
     });
+
+    //FUNCTION ADDED ONCE FILE DOWNLOADED
+    function plotCO2Data(data){
+
+    }
 
   </script>
 
