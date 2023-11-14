@@ -66,8 +66,15 @@
                          .attr("width", width + margin.left + margin.right)
                          .attr("height", height + margin.top + margin.bottom)
                   .append("g")
-                  .attr("transform","translate(" +margin.left + "," +margin.top +")");       
+                  .attr("transform","translate(" +margin.left + "," +margin.top +")");
 
+      svg.append("g") //Append to a <g> - group element
+          .attr('class', 'x-axis')
+          .call(xAxis);       
+          
+      svg.append("g") //Append to a <g> - group element
+          .attr('class', 'y-axis')
+          .call(yAxis);
 
     }//FUCNTION ENDS
 
