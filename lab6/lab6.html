@@ -4,10 +4,8 @@
 <!---CDN SCRIPT ADDED FOR D3 AND JQUERY-->
  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.0.0/d3.js" 
-         integrity="sha512-CT/0rPUk9qC3gqZwae8PRQLjYawQcTLilq4hvnK/M91nD1t5wMMGNfXlpqYjArvoBPjfhXyS43YSSQIV/SFF1A==" 
-         crossorigin="anonymous" referrerpolicy="no-referrer">
- </script>
-
+ integrity="sha512-CT/0rPUk9qC3gqZwae8PRQLjYawQcTLilq4hvnK/M91nD1t5wMMGNfXlpqYjArvoBPjfhXyS43YSSQIV/SFF1A==" 
+ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <head>
   <meta charset="UTF-8">
   <title>D3.js demo</title>
@@ -28,7 +26,8 @@
     });
 
     //FUNCTION ADDED ONCE FILE DOWNLOADED
-    function plotCO2Data(data){
+    function plotCO2Data(data)
+    {
 
       //set up svg size and margin
       var margin = {top: 50, right: 50, bottom: 50, left: 50},
@@ -37,44 +36,48 @@
 
       //creating the x and y sclaes for interpolated C02 Values
       var y = d3.scaleLiner()
-              .domain(d3.extent(data, function (d) {return d["Interpolated"]; })) //atmospheric co2 values
-              .range([height, 0]);  //seems backward because svg y is down
+          .domain(d3.extent(data, function (d) {return d["Interpolated"] })) //atmospheric co2 values
+          .range([height, 0]);  //seems backward because svg y is down
       
       //parse date and time
       var parseDate = d3.timeParse('%Y-%m-%d'); //converts string to a date object year/month/day
 
       var x = d3.scaleTime()
-              .domain(d3.extent(data, function (d) {return parseDate( d["Data"]); })) //atmospheric co2 values
-              .range([0, width]);  //seems backward because svg y is down
+          .domain(d3.extent(data, function (d) {return parseDate(d["Data"]); })) //atmospheric co2 values
+          .range([0, width]);  //seems backward because svg y is down
 
       //Axes 
       //x is the scaleTime()
       var xAxis = d3.axisBottom(x)
-                  .ticks(3);
+          .ticks(3);
 
       //y is the scaleLiner()
       var yAxis = d3.axisLeft(y)
-                  .ticks(3);
+          .ticks(3);
       
       //Draw lines - maps x,y coordinates for each data point, using x,y scale functions
       var valueline = d3.line()
-                      .x(function (d) {return x(parseDate(d["Date"])); }) //x pixel
-                      .y(function (d) {return y(d["Interpolated"]); });
+          .x(function (d) { return x(parseDate(d["Date"])); }) //x pixel
+          .y(function (d) { return y(d["Interpolated"]); });
       
       var svg = d3.select('body')
-                  .append("svg")
-                         .attr("width", width + margin.left + margin.right)
-                         .attr("height", height + margin.top + margin.bottom)
-                  .append("g")
-                  .attr("transform","translate(" +margin.left + "," +margin.top +")");
+          .append("svg")
+               .attr("width", width + margin.left + margin.right)
+               .attr("height", height + margin.top + margin.bottom)
+          
+          .append("g")
+               .attr("transform","translate(" +margin.left + "," +margin.top +")");
 
-      svg.append("g") //Append to a <g> - group element
+      svg.append('g') //Append to a <g> - group element
           .attr('class', 'x-axis')
           .call(xAxis);       
           
-      svg.append("g") //Append to a <g> - group element
+      svg.append('g') //Append to a <g> - group element
           .attr('class', 'y-axis')
           .call(yAxis);
+
+      svg.append("path") //add the calueline path
+          .attr("d", valueline(data));
 
     }//FUCNTION ENDS
 
