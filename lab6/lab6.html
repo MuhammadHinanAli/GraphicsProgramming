@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.0.0/d3.js" 
-         integrity="sha512-5dXYVBtufApBk13BedNojMguLrt6eYVyWsYpg7mgUEIfMu+IyfNqRHk61kSUaF8TOEbIFp/CheiEAyCsM8QXnw==" 
+ <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.0.0/d3.js" 
+         integrity="sha512-CT/0rPUk9qC3gqZwae8PRQLjYawQcTLilq4hvnK/M91nD1t5wMMGNfXlpqYjArvoBPjfhXyS43YSSQIV/SFF1A==" 
          crossorigin="anonymous" referrerpolicy="no-referrer">
  </script>
 
@@ -14,9 +15,14 @@
 </head>
 
 <body>
-    <h1>M H ALI </h1>
+    <h1>M H ALI</h1>
     <hr>
+
   <script type="text/javascript">
+  //RETRIEVE THE JSON DATA
+    $.getJSON("https://pkgstore.datahub.io/core/co2-ppm/co2-mm-mlo_json/data/aed7eb0d19cbcd90790525d40728b0a8/co2-mm-mlo_json.json", function(data) {
+      console.log(data);
+    });
 
   </script>
 
