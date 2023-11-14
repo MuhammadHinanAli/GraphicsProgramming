@@ -37,11 +37,15 @@
 
       //creating the x and y sclaes for interpolated C02 Values
       var y = d3.scaleLiner()
-              .domain(d3.extent(data, function (d) {return d["Interpolated"] })) //atmospheric co2 values
+              .domain(d3.extent(data, function (d) {return d["Interpolated"]; })) //atmospheric co2 values
               .range([height, 0]);  //seems backward because svg y is down
       
       //parse date and time
       var parseDate = d3.timeParse('%Y-%m-%d'); //converts string to a date object year/month/day
+
+      var x = d3.scaleLiner()
+              .domain(d3.extent(data, function (d) {return parseDate( d["Data"]); })) //atmospheric co2 values
+              .range([0, width]);  //seems backward because svg y is down
 
     }//FUCNTION ENDS
 
