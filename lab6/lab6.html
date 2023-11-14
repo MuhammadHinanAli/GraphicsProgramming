@@ -35,6 +35,11 @@
       width = 900 - margin.left - margin.right,
       height = 670 - margin.top - margin.bottom;
 
+      //creating the x and y sclaes for interpolated C02 Values
+      var y = d3.scaleLiner()
+              .domain(d3.extent(data, function (d) {return d["Interpolated"] }))
+              .range([height, 0]);
+
     }//FUCNTION ENDS
 
   </script>
