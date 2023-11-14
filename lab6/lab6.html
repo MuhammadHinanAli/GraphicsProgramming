@@ -54,7 +54,12 @@
 
       //y is the scaleLiner()
       var yAxis = d3.axisLeft(y)
-                  .ticks(3);                   
+                  .ticks(3);
+      
+      //Draw lines - maps x,y coordinates for each data point, using x,y scale functions
+      var valueline = d3.line()
+                      .x(function (d) {return x(parseDate(d["Date"])); }) //x pixel
+                      .y(function (d) {return y(d["Interpolated"]); });
 
     }//FUCNTION ENDS
 
