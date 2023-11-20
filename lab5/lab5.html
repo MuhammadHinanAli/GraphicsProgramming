@@ -26,6 +26,8 @@
     document.body.appendChild(renderer.domElement);
 
     //Creating a Tetrahedron (including material and mesh) and add it to the scene.
+
+    
     const geometry = new THREE.TetrahedronGeometry(5, 0); //(RADIUS,DETAIL)
     const material = new THREE.MeshLambertMaterial({ color: 0xffff00, wireframe : false, emissive: 0x049EF4 }); //wireframe: false for the next part of the exercises //changed to MESHLAMBERTMATERIAL.
     const tetrahedron = new THREE.Mesh(geometry, material);
