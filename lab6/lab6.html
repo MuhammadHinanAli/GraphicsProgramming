@@ -112,12 +112,12 @@
           .text("Atmospheric CO2 Chart"); 
 
 
-      svg.append("path") //add the calueline path
+      svg.append("path") //add the valueline path
           .attr("d", valueline(data))
           .attr("fill", "none")
           .attr("stroke", "red");
 
-      svg.append("path") //add the calueline path
+      svg.append("path") //add the valueline1 path
           .attr("d", valueline1(data))
           .attr("fill", "none")
           .attr("stroke", "black");
