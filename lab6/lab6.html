@@ -60,6 +60,11 @@
       var valueline = d3.line()
           .x(function (d) { return x(parseDate(d["Date"])); }) //x pixel
           .y(function (d) { return y(d["Interpolated"]); });
+
+      //Draw lines - maps x,y coordinates for each data point, using x,y scale functions
+      var valueline1 = d3.line()
+          .x(function (d) { return x(parseDate(d["Date"])); }) //x pixel
+          .y(function (d) { return y(d["Trend"]); });
       
 
       //CREATING SVG ELEMENT
@@ -88,21 +93,34 @@
          .attr("text-anchor", "middle") 
          .style("font-size", "40px")
          .attr("tranform","rotate(-90,200,20)")
-         .text("Interpolated")  
+         .text("Interpolated"); 
     
       //APPEND X AXIS FOR TEXT
-         svg.append("text")
+      svg.append("text")
          .attr("x", 350)
          .attr("y", 600)
          .attr("text-anchor", "middle") 
          .style("font-size", "40px")
-         .text("Date") 
-                 
+         .text("Date"); 
+
+      //CHART LABEL
+      svg.append("text")
+         .attr("x", 360)
+         .attr("y", 0)
+         .attr("text-anchor", "middle") 
+         .style("font-size", "40px")
+         .text("Atmospheric CO2 Chart"); 
+
 
       svg.append("path") //add the calueline path
           .attr("d", valueline(data))
           .attr("fill", "none")
           .attr("stroke", "red");
+
+      svg.append("path") //add the calueline path
+          .attr("d", valueline1(data))
+          .attr("fill", "none")
+          .attr("stroke", "black");
           
 
     }//FUCNTION ENDS
