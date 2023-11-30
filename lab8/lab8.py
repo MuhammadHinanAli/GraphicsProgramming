@@ -26,3 +26,4 @@ plt.title('Original'), plt.xticks([]), plt.yticks([])
 plt.subplot(nrows, ncols,2),plt.imshow(imgGray, cmap = 'gray')
 plt.title('GrayScale'), plt.xticks([]), plt.yticks([])
 plt.show()
+
