@@ -17,3 +17,6 @@ plt.subplot(2, 1, 2), plt.imshow(imgGray, cmap='gray')
 plt.title('GrayScale'), plt.xticks([]), plt.yticks([])
 
 plt.show()
+
+# Apply GaussianBlur with different kernel sizes
+kernel_sizes = [3, 5, 9, 13]
