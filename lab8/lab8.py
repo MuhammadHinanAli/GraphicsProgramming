@@ -58,3 +58,8 @@ plt.show()
 cannyThreshold = 100
 cannyParam2 = 200
 canny = cv2.Canny(imgGray, cannyThreshold, cannyParam2)
+
+# Plot Canny edge detection result
+plt.imshow(canny, cmap='gray')
+plt.title('Canny Edge Detection'), plt.xticks([]), plt.yticks([])
+plt.show()
