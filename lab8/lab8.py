@@ -73,6 +73,7 @@ canny = cv2.Canny(imgGray, cannyThreshold, cannyParam2)
 nrow = 2
 ncol = 3
 
+# Plotting images with Matplotlib
 plt.subplot(nrow, ncol, 1), plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
 plt.title('Original'), plt.xticks([]), plt.yticks([])
 plt.subplot(nrow, ncol, 2), plt.imshow(imgGray, cmap='gray')
