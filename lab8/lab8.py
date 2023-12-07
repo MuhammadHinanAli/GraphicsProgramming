@@ -48,3 +48,8 @@ plt.show()
 
 # Combine horizontal and vertical edges
 sobelCombined = cv2.addWeighted(sobelHorizontal, 0.5, sobelVertical, 0.5, 0)
+
+# Plot combined Sobel output
+plt.imshow(sobelCombined, cmap='gray')
+plt.title('Combined Sobel Edges'), plt.xticks([]), plt.yticks([])
+plt.show()
