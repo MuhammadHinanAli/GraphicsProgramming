@@ -38,3 +38,10 @@ plt.show()
 # Sobel edge detection
 sobelHorizontal = cv2.Sobel(imgGray, cv2.CV_64F, 1, 0, ksize=5)
 sobelVertical = cv2.Sobel(imgGray, cv2.CV_64F, 0, 1, ksize=5)
+
+# Plot Sobel output images
+plt.subplot(1, 2, 1), plt.imshow(sobelHorizontal, cmap='gray')
+plt.title('Sobel Horizontal'), plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(sobelVertical, cmap='gray')
+plt.title('Sobel Vertical'), plt.xticks([]), plt.yticks([])
+plt.show()
