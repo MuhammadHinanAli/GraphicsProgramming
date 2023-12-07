@@ -53,3 +53,8 @@ sobelCombined = cv2.addWeighted(sobelHorizontal, 0.5, sobelVertical, 0.5, 0)
 plt.imshow(sobelCombined, cmap='gray')
 plt.title('Combined Sobel Edges'), plt.xticks([]), plt.yticks([])
 plt.show()
+
+# Canny edge detection
+cannyThreshold = 100
+cannyParam2 = 200
+canny = cv2.Canny(imgGray, cannyThreshold, cannyParam2)
