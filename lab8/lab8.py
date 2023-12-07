@@ -34,3 +34,7 @@ for i, kernel_size in enumerate(kernel_sizes):
         plt.subplot(2, 2, i + 2), plt.imshow(imgOut, cmap='gray')
         plt.title(f'Blurred (Kernel {kernel_size})'), plt.xticks([]), plt.yticks([])
 plt.show()
+
+# Sobel edge detection
+sobelHorizontal = cv2.Sobel(imgGray, cv2.CV_64F, 1, 0, ksize=5)
+sobelVertical = cv2.Sobel(imgGray, cv2.CV_64F, 0, 1, ksize=5)
