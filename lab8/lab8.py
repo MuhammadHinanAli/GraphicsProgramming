@@ -45,3 +45,6 @@ plt.title('Sobel Horizontal'), plt.xticks([]), plt.yticks([])
 plt.subplot(1, 2, 2), plt.imshow(sobelVertical, cmap='gray')
 plt.title('Sobel Vertical'), plt.xticks([]), plt.yticks([])
 plt.show()
+
+# Combine horizontal and vertical edges
+sobelCombined = cv2.addWeighted(sobelHorizontal, 0.5, sobelVertical, 0.5, 0)
