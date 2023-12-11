@@ -1,5 +1,6 @@
 import cv2
 from ultralytics import YOLO
+from PIL import Image
 
 # Load an official or custom model
 model = YOLO('yolov8n.pt')  # Load an official Detect model
@@ -38,3 +39,9 @@ while cap.isOpened():
 # Release the video capture object and close the display window
 cap.release()
 cv2.destroyAllWindows()
+
+for r in results:
+    im_array = r.plot()  # plot a BGR numpy array of predictions
+    im = Image.fromarray(im_array[..., ::-1])  # RGB PIL image
+    im.show()  # show image
+    im.save('results.jpg')  # save image
