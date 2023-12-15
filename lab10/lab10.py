@@ -6,9 +6,10 @@ from PIL import Image
 model = YOLO('yolov8n.pt')  # Load an official Detect model
 
 # Perform tracking with the model
-results = model.track(source='traffic.mp4', show=True)  # Tracking with default tracker
+#results = model.track(source='traffic.mp4', show=True)  # Tracking with default tracker
 #results = model.track(source='traffic2.mp4', show=True)  # Tracking with default tracker
 #results = model.track(source='traffic3.mp4', show=True)  # Tracking with default tracker
+
 
 # Open the video file
 video_path = "traffic.mp4"
