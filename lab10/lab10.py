@@ -14,7 +14,8 @@ model = YOLO('yolov8n.pt')  # Load an official Detect model
 
 
 # Open the video file
-video_path = "traffic.mp4"
+#video_path = "traffic.mp4"
+video_path = "motogp.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # Loop through the video frames

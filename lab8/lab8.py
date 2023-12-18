@@ -4,8 +4,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Load the image
-img = cv2.imread('ATU.jpg')
-#img = cv2.imread('STADIUM.jpg')
+#img = cv2.imread('ATU.jpg')
+img = cv2.imread('STADIUM.jpg')
 
 # Convert the image to grayscale
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
