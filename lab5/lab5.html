@@ -106,4 +106,18 @@
 
       }
     }
+    class Cube {
+      constructor(scene) {
+        this.scene = scene;
+        // Define gemotery and material for Cube
+        this.geometry = new THREE.BoxGeometry(20, 20, 20);
+        this.material = new THREE.MeshLambertMaterial({ color: 'black', wireframe: true, transparent: true, opacity: 0.1 });
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.mesh.position.set(0, 0, 0);
+        scene.add(this.mesh);
+        // Set new colour- consist of three random numbers
+        const newColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+        this.mesh.material.color = newColor;
+      }
+    }
   
