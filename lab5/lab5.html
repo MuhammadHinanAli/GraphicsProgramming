@@ -89,4 +89,21 @@
         this.mesh.material.color = newColor;
       }
     }
+
+    class Plane {
+      constructor(scene) {
+        this.scene = scene;
+        // Define geometry and material for Plane
+        this.geometry = new THREE.PlaneGeometry(40, 40);
+        this.material = new THREE.MeshLambertMaterial({ color: 'red', side: THREE.DoubleSide });
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        // Rotate plane so it is parallel with bottom side of the cube
+        this.mesh.rotation.x = -Math.PI / 2;
+        this.mesh.position.set(0, -30, -60)
+        scene.add(this.mesh);
+        // Enable shadows for the plane
+        this.mesh.receiveShadow = true;
+
+      }
+    }
   
