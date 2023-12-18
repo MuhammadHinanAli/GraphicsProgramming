@@ -1,66 +1,39 @@
 <!DOCTYPE html>
 <html>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js"
-  integrity="sha512-3q7E1auBiTXnYd6u7GJC16HDUR0aG+p8jhxIb5Arvhrr2Pu60fjN6z8RNIkq2y1yvfbZnBcssQpHkLZM2riv1w=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--Import Three.js CDN-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <head>
   <meta charset="UTF-8">
-  <title>3D</title>
+  <title></title>
   <style type="text/css">
   </style>
 </head>
 
 <body>
-  <h1>M H ALI </h1>
+  <h1>M H ALI</h1>
   <hr>
+
   <script type="text/javascript">
-
-    //IMPLEMENTING A SCENE, CAMERA AND RENDERER
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    //Creating a Tetrahedron (including material and mesh) and add it to the scene.
-
-    
-    const geometry = new THREE.TetrahedronGeometry(5, 0); //(RADIUS,DETAIL)
-    const material = new THREE.MeshLambertMaterial({ color: 0xffff00, wireframe : false, emissive: 0x049EF4 }); //wireframe: false for the next part of the exercises //changed to MESHLAMBERTMATERIAL.
-    const tetrahedron = new THREE.Mesh(geometry, material);
-    scene.add(tetrahedron);
-
-    //CAMERA POSITION
-    camera.position.z = 10;
-
-    //spotlight added
-    var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.position.set(1, 0.5, 1);
-    scene.add(spotLight);
-
-
-    //REPEAT ME FUNCTION
-    function repeatme() {
-
-      //set up renderer
-      renderer.render(scene, camera);
-
-      //rotating the tetrahedron
-       tetrahedron.rotation.x += 0.01;
-       tetrahedron.rotation.y += 0.01;
-
-      //positioning the tetrahedron
-       tetrahedron.position.x += 0.1;
-
-      requestAnimationFrame(repeatme);
+    class Tetra {
+      constructor(scene) {
+        this.scene = scene;
+        // Define the geometry and material for a tetrahedron.
+        this.material = new THREE.MeshLambertMaterial({ color: 0xffff00, wireframe: false });
+        this.geometry = new THREE.TetrahedronGeometry(10, 0);
+        // Create a material for the wireframe
+        this.wireframeMaterial = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        // Create a separate wireframe mesh to display on top
+        this.wireframeMesh = new THREE.Mesh(this.geometry, this.wireframeMaterial);
+        this.mesh.add(this.wireframeMesh);
+        this.mesh.position.set(0, 30, 0);
+        this.scene.add(this.mesh);
+        // Define gravity
+        this.gravity = 0.01;
+        // Set velocity for bouncing
+        this.velocity = new THREE.Vector3(-0.5, -0.5, -0.5);
+        // Enable shadows for the tetrahedron
+        this.mesh.castShadow = true;
+      }
     }
-    repeatme();
-
-  </script>
-
-</body>
-
-</html>
