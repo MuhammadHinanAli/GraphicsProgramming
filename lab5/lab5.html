@@ -42,4 +42,51 @@
         this.mesh.rotation.y += 0.01;
         this.mesh.rotation.z += 0.01;
       }
+      move() {
+        // Update Y velocity to simulate gravity
+        this.velocity.y -= this.gravity;
+        // Save velocity
+        this.mesh.position.add(this.velocity);
+
+        // Moving around X
+        // If ball touches left wall
+        if (this.mesh.position.x <= -15) {
+          this.mesh.position.x = -15;
+          this.velocity.x *= -1;
+        }
+        // If ball touches right wall
+        else if (this.mesh.position.x >= 15) {
+          this.mesh.position.x = 15;
+          this.velocity.x *= -1;
+        }
+        // Moving around Y
+        // If tetrahedron touches bottom border
+        if (this.mesh.position.y <= -15) {
+          this.mesh.position.y = -15; // Prevent it from going below the plane
+          this.velocity.y *= -0.8; // Reverse the Y velocity to bounce
+        }
+        // If tetrahedron touches top border
+        else if (this.mesh.position.y >= 15) {
+          this.mesh.position.y = 15; // Prevent it from going below the plane
+          this.velocity.y *= -1; // Reverse the Y velocity to bounce
+        }
+
+        // Moving around Z
+        // If tetrahedron touches back wall
+        if (this.mesh.position.z <= -60) {
+          this.mesh.position.z = -60;
+          this.velocity.z *= -1;
+        }
+        // If tetrahedron touches front wall
+        else if (this.mesh.position.z >= -20) {
+          this.mesh.position.z = -20;
+          this.velocity.z *= -1;
+        }
+      }
+      // Method to change the tetrahedron's color
+      changeColor() {
+        const newColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+        this.mesh.material.color = newColor;
+      }
     }
+  
