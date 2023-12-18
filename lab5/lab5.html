@@ -147,4 +147,50 @@
     // Create cube object
     const cube = new Cube(scene);
 
-  
+    // Create spotlight and add it to the scene
+    const spotLight = new THREE.SpotLight(0xffffff);
+    spotLight.position.set(0, 20, 5);
+    scene.add(spotLight);
+
+    // Create a camera helper for the light source to display its position and direction
+    const lightHelper = new THREE.CameraHelper(spotLight.shadow.camera);
+    scene.add(lightHelper);
+
+    // Increase shadow map resolution
+    spotLight.shadow.mapSize.width = 2048;
+    spotLight.shadow.mapSize.height = 2048;
+
+    // Set light properties for shadows
+    spotLight.castShadow = true;
+
+    // Enable shadows for the renderer
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+
+    // Repeatme() function
+    function repeatme() {
+      tetra.rotate();
+      tetra.move();
+      // Repeat the render
+      renderer.render(scene, camera);
+      cube.mesh.rotation.y += 0.01;
+      plane.mesh.rotation.z += 0.01;
+
+      requestAnimationFrame(repeatme);
+    }
+    // Get the animation going.
+    repeatme();
+
+    // Function to change the tetrahedron's color every 2 seconds
+    function changeColor() {
+      tetra.changeColor();
+      setTimeout(changeColor, 2000);
+    }
+
+    // Start changing the color
+    changeColor();
+
+
+  </script>
+</body>
