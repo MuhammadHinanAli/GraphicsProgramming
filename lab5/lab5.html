@@ -120,10 +120,15 @@
         this.mesh.material.color = newColor;
       }
     }
-    
+
     // Implement scene
     // Create a Three.js scene to hold objects.
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('white');
+
+    // Create a camera with specified properties.
+    const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 100);
+    // Set camera position
+    camera.position.z = 30;
 
   
